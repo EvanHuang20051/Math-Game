@@ -21,3 +21,6 @@ Added simplify answer reminder. End screen is now displayed after a certain numb
 
 Version 8:
 Answer now matches the question. Question is displayed(though will be improved later).
+
+Version 9:
+Time taken in total and for each question is recorded and reported. Also, the entry numerator and denominator boxes are cleared when a correct answer is been submitted.
