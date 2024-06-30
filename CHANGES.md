@@ -23,4 +23,7 @@ Version 8:
 Answer now matches the question. Question is displayed(though will be improved later).
 
 Version 9:
-Time taken in total and for each question is recorded and reported. Also, the entry numerator and denominator boxes are cleared when a correct answer is been submitted.
+Time taken in total and for each question is recorded and reported. Also, the entry numerator and denominator boxes are cleared when a correct answer is submitted.
+
+Version 10:
+You can now lose. Added more text to the Instructions window. Overall improvements.
