@@ -27,3 +27,6 @@ Time taken in total and for each question is recorded and reported. Also, the en
 
 Version 10:
 You can now lose. Added more text to the Instructions window. Overall improvements.
+
+Version 11:
+Improved question display(initially created in V8). Added docstring comments(though these will be improved later). Overall improvements.
