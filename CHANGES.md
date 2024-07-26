@@ -30,3 +30,6 @@ You can now lose. Added more text to the Instructions window. Overall improvemen
 
 Version 11:
 Improved question display(initially created in V8). Added docstring comments(though these will be improved later). Overall improvements.
+
+Version 12:
+Added column headers for highscores window. Added finish flag graphic using canvas. Reduced number of comments so that code is easier to read. Overall improvements.
