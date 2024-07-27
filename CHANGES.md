@@ -33,3 +33,6 @@ Improved question display(initially created in V8). Added docstring comments(tho
 
 Version 12:
 Added column headers for highscores window. Added finish flag graphic using canvas. Reduced number of comments so that code is easier to read. Overall improvements.
+
+Version 13:
+Scores are now saved into the "scores.json" file. The highscores window now displays these scores, however, they are not sorted. Also, there is a reset button that clears the file.
