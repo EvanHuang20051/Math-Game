@@ -36,3 +36,6 @@ Added column headers for highscores window. Added finish flag graphic using canv
 
 Version 13:
 Scores are now saved into the "scores.json" file. The highscores window now displays these scores, however, they are not sorted. Also, there is a reset button that clears the file.
+
+Version 14:
+Scores are now sorted in appropriate order. Improved layout of highscores window. Added username length cap of 18 characters. May switch to a monospaced font like courier, at least for username.
