@@ -41,4 +41,4 @@ Version 14:
 Scores are now sorted in appropriate order. Improved layout of highscores window. Added username length cap of 18 characters. May switch to a monospaced font like courier, at least for username.
 
 Version 15:
-Added cap on number of scores that can be displayed in highscores window. Increased maximum username length. Improved highscores window and menu layouts. Added real-time stopwatch.
+Added cap on number of scores that can be displayed in highscores window. Improved highscores window and menu layouts. Added real-time stopwatch.
