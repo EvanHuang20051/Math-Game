@@ -42,3 +42,6 @@ Scores are now sorted in appropriate order. Improved layout of highscores window
 
 Version 15:
 Added cap on number of scores that can be displayed in highscores window. Improved highscores window and menu layouts. Added real-time stopwatch.
+
+Version 16:
+Fixed bug with stopwatch making multiple copies of itself. Fixed bug with images disappearing. Added player rocket graphic. Added animation (canvas move method) for player rocket.
