@@ -45,3 +45,6 @@ Added cap on number of scores that can be displayed in highscores window. Improv
 
 Version 16:
 Fixed bug with stopwatch making multiple copies of itself. Fixed bug with images disappearing. Added player rocket graphic. Added animation (canvas move method) for player rocket.
+
+Version 17:
+Minor animation improvement. Layout improvement for: Start Menu, Level Selection, Gameplay, End Screen, Highscores Window, and Instructions Window. Overall improvements.
