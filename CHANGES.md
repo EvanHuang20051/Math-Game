@@ -48,3 +48,5 @@ Fixed bug with stopwatch making multiple copies of itself. Fixed bug with images
 
 Version 17:
 Minor animation improvement. Layout improvement for: Start Menu, Level Selection, Gameplay, End Screen, Highscores Window, and Instructions Window. Overall improvements.
+Var:
+Highscores window uses shortened words and mm:ss time format.
