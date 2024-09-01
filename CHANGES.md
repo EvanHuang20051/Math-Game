@@ -51,3 +51,6 @@ Minor animation improvement. Layout improvement for: Start Menu, Level Selection
 
 Var:
 Highscores window uses shortened words and mm:ss time format.
+
+Version 18:
+Binded Enter key to the submit function. Added and improved comments/dosctrings.
