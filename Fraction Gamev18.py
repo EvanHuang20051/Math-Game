@@ -91,7 +91,6 @@ def simplifyFraction(num, den):
 
 def openStart():
     '''Functions for the level select screen'''
-    print("Opening level selection")
     def cleanLevelSelect():
         '''Gets rid of level section screen visuals'''
         back.place_forget()
@@ -107,20 +106,16 @@ def openStart():
     def checkEntries():
         '''Checks if entry boxes are filled, beginning the game if they are and giving a warning if they are not'''
         if username.get() == "":
-            print("Please enter a Username")
             no_username = messagebox.showwarning("Username missing", "Please enter a Username")
         elif year_level.get() == "":
-            print("Please select a Year Level")
             no_year_level = messagebox.showwarning("Year Level missing", "Please select a Year Level")
         elif AI_difficulty.get() == "":
-            print("Please select an AI difficulty")
             no_AI_difficulty = messagebox.showwarning("AI difficulty missing", "Please select an AI difficulty")
         elif len(username.get()) > 18:
             shorten_username = messagebox.showwarning("Username exceeds maximum length", "Username must be 18 characters or less!")
-            print("Username must be 18 characters or less!")
         else:
             # Start the game
-            global base_list
+            global base_list # List from which numbers are chosen for questions
             if year_level.get() == "Year 7-8":
                 base_list = [1, 2, 3, 4, 5]
             elif year_level.get() == "Year 9-10":
@@ -128,7 +123,7 @@ def openStart():
             else:
                 base_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             global time_limit
-            if AI_difficulty.get() == "Easy":
+            if AI_difficulty.get() == "Easy": # AI_difficulty determines the time limit
                 time_limit = 170
             elif AI_difficulty.get() == "Medium":
                 time_limit = 140
@@ -139,7 +134,6 @@ def openStart():
     
     def playGame():
         '''Functions for the gameplay'''
-        print(username.get(), "started a game at", year_level.get())
         def cleanGame():
             '''Gets rid of game visuals and bindings'''
             submit_num.place_forget()
@@ -161,7 +155,6 @@ def openStart():
             operator_label.place(x=559, y=305)
             fraction2num_label.place(x=669, y=265)
             fraction2den_label.place(x=669, y=350)
-            print(f"Answer: {question.answernum}/{question.answerden}")
             global answer
             answer = (question.answernum, question.answerden)
             global q_start
@@ -195,18 +188,15 @@ def openStart():
 
             global number_correct, dest_x
             if not (num.isdigit() and den.isdigit()):
-                print("Enter integers only!")
                 displayText("Enter integers only!", 390, "#FF0000")
             else:
                 num = int(num)
                 den = int(den)
                 if (num, den) == answer:
-                    print("Correct!")
                     displayText("Correct!", 511, "#00FF00")
                     number_correct += 1
                     q_end = time.time()
                     q_time_taken = q_end - q_start
-                    print(f"You spent {round(q_time_taken, 2)} seconds on that question")
                     cleanEntries()
                     PlayerStep(10)
                     if number_correct < 8:
@@ -214,13 +204,10 @@ def openStart():
                     else:
                         endGame()
                 elif den == 0:
-                    print("Don't divide by zero!") # Otherwise this would produce an error
-                    displayText("Don't divide by zero!", 380, "#FF0000")
+                    displayText("Don't divide by zero!", 380, "#FF0000") # Otherwise this would produce an error
                 elif simplifyFraction(num, den) == answer:
-                    print("Simplify your answer!") # Remind player to simplify their answer
-                    displayText("Simplify your answer!", 371, "Cyan")
+                    displayText("Simplify your answer!", 371, "Cyan") # Remind player to simplify their answer
                 else:
-                    print("Wrong!")
                     displayText("Wrong!", 519, "#FF0000")
                     cleanEntries()
                     generateQuestion()
@@ -265,7 +252,6 @@ def openStart():
             try_again_label.place(x=481, y=450)
             # Record result
             record_score(username.get(), time_taken, year_level.get(), AI_difficulty.get(), win)
-            print(year_level.get(), AI_difficulty.get())
             # Yes and No button
             yes = Button(window, text = "Yes", command = tryAgain, font = ("Helvetica", 24), padx = 10, pady = 10)
             yes.place(x=481, y=530)
@@ -289,8 +275,10 @@ def openStart():
                 json.dump(data_list, file)
 
         def my_score_better(my_score, data):
-            '''Checks if the "data" score should be considered better than the "my_score" score'''
-            # Rank by: 1. Win status, 2. Year level, 3. AI difficulty, 4. Time, 5. Recency
+            '''
+            Checks if the "data" score should be considered better than the "my_score" score
+            Rank by: 1. Win status, 2. Year level, 3. AI difficulty, 4. Time, 5. Recency
+            '''
             if my_score["win_status"] == "Win" and data["win_status"] == "Loss":
                 return True
             elif my_score["win_status"] == "Loss" and data["win_status"] == "Win":
@@ -315,6 +303,9 @@ def openStart():
         
         global number_correct
         number_correct = 0
+        # Back button
+        #back = Button(window, text = "Back", command = goBack, font = ("Helvetica", 30), padx = 10, pady = 10)
+        #back.place(x=10, y=10)
         # Submission boxes
         submit_num = Entry(window, font=("Helvetica", 24), width = 5, justify = "center")
         submit_num.place(x=552, y=500)
@@ -390,7 +381,6 @@ def openStart():
 
 def openInstructions():
     '''Opens the Intructions window'''
-    print("Opening instructions window")
     instructions_window = Toplevel(window)
     instructions_window.title("Instructions")
     instructions_window.config(bg="#400050") # Dark Purple
@@ -444,7 +434,6 @@ def openHighscores():
         confirm_reset = messagebox.askquestion("Confirm Reset", "This will reset all of your scores! Do you wish to proceed?")
         if confirm_reset == "yes":
             output_file = open("scores.json", 'w').close()
-            print("Scores reset")
 
     class score_label():
         '''A specific score that is displayed'''
@@ -473,11 +462,10 @@ def openHighscores():
                 if y_cord > 500:
                     break
         except FileNotFoundError:
-            print("No data found.")
+            no_data = messagebox.showwarning("File not found", "File not found")
         except json.decoder.JSONDecodeError:
-            print("No scores submitted.")
+            no_entries = messagebox.showwarning("No scores submitted", "No scores submitted")
     
-    print("Opening highscores window")
     highscores_window = Toplevel()
     highscores_window.title("Highscores")
     highscores_window.config(bg="#CCCCCC") # Grey
@@ -503,14 +491,12 @@ def openHighscores():
 
 def closeProgram():
     '''Closes the program'''
-    print("Quitting program")
     exit()
 
 
 def startUp():
     '''Opens the main menu'''
     global title, start, instructions, highscores, quit_button
-    print("Entering main menu")
     # Title
     title = Label(window, text = "Fractions", font = ("Helvetica", 72), fg="#FFFFFF", bg="#300040", padx = 10, pady = 10)
     title.place(x=388, y=130)
